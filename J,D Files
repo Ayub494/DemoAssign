@@ -5,3 +5,41 @@ COPY . /src/java
 WORKDIR /src/java
 RUN ["javac","PrimeNumber.java"]
 ENTRYPOINT ["java","PrimeNumber"]
+
+(Jenkinfile (for_docker_assign))
+pipeline
+{
+ environment
+ {
+  registry="ayyub17/demoimage"
+  registryCredential='dockerid'
+  dockerImage= ' '
+ }
+agent any
+stages
+  {
+    stage('Build image')
+    {
+      steps
+      {
+       script
+       {
+        dockerImage = docker.build registry +":$BUILD NUMBER"
+        }
+       }
+      }
+stage('Depoy the image')
+{
+ steps
+  {
+script
+   {
+     docker.withRegistry( '',registryCredential )
+     {
+       dockerImage.push()
+     }
+    }
+   }
+}
+}
+}
