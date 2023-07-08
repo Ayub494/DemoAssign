@@ -1,0 +1,10 @@
+Create a folder containing java program and a “Dockerfile”
+Open command prompt and goto folder location
+→docker build -t docker-java .
+→Docker image→(Run the image to check o/p) docker run docker-java
+→docker tag docker-java ayyub17/docker-java → docker login (login succeeded)
+→docker push ayyub17/docker-java→docker images →docker pull ayyub17/docker-java
+→docker images→docker pull siddhantkhobre/hello-docker-java→docker images→
+docker pull ayyub17/docker-java→docker images→
+docker pull siddhantkhobre/hello-docker-java
+→docker images
